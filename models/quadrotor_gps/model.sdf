@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="quadrotor_gps">
+    <link name="link">
+      <pose>0 0 0.182466 0 0 0</pose>
+      <inertial>
+        <mass>1.316</mass>
+        <inertia>
+          <ixx>0.0128</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0128</iyy>
+          <iyz>0</iyz>
+          <izz>0.0218</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://quadrotor/meshes/quadrotor_base.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://quadrotor/meshes/quadrotor_base.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- GPS -->
+    <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
+      <!-- <robotNamespace></robotNamespace> -->
+      <alwayson>true</alwayson>
+      <updaterate>1.0</updaterate>
+      <bodyname>link</bodyname>
+      <topicname>/quadrotor/fix</topicname>
+      <velocitytopicname>/quadrotor/fix_velocity</velocitytopicname>
+      <drift>5.0 5.0 5.0</drift>
+      <gaussiannoise>0.1 0.1 0.1</gaussiannoise>
+      <velocitydrift>0 0 0</velocitydrift>
+      <velocitygaussiannoise>0.1 0.1 0.1</velocitygaussiannoise>
+      <!-- setting reference coordinate (gazebo origin) -->
+      <!-- exact same as in huntsville world file -->
+      <referenceLatitude>-86.6035</referenceLatitude>
+      <referenceLongitude>34.755</referenceLongitude>
+      <referenceHeading>0</referenceHeading>
+      <referenceAltitude>208</referenceAltitude>
+    </plugin>
+
+    <!-- IMU -->
+    <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+      <robotNamespace></robotNamespace>
+      <alwaysOn>true</alwaysOn>       
+      <bodyName>link</bodyName>
+      <topicName>/quadrotor/imu</topicName>
+      <serviceName>imu_service</serviceName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <updateRate>10.0</updateRate> 
+    </plugin>
+
+  </model>
+</sdf>

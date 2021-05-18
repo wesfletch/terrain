@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="heightmap">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_heightmap">
+          <geometry>
+            <heightmap>
+              <uri>file://n34_low_res4.tif</uri>
+              <!-- z-size chosen to make geography less absurd -->
+              <!-- <size>10 10 1</size> -->
+              <!-- negative z-pos to offset hunstville elevation (~180m in reality) -->
+              <pos>0 0 -122</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+
+        <visual name="visual_heightmap">
+          <geometry>
+            <heightmap>
+              <texture>
+                <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <uri>file://n34_low_res4.tif</uri>
+              <!-- z-size chosen to make geography less absurd -->
+              <!-- <size>10 10 1</size> -->
+              <!-- negative z-pos to offset hunstville elevation (~180m in reality) -->
+              <pos>0 0 -122</pos>
+            </heightmap>
+          </geometry>
+        </visual>
+
+      </link>
+    </model>
+
+  </world>
+</sdf>
+

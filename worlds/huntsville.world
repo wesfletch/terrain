@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- don't match the spherical coords in gazebo, but they're close? -->
+    <spherical_coordinates>
+      <latitude_deg>-86.6035</latitude_deg>
+      <longitude_deg>34.755</longitude_deg>
+      <elevation>208</elevation>
+    </spherical_coordinates>  
+    
+    <!-- home-brewed ardupilot sim vehicle -->
+    <include>
+      <!-- <uri>model://quadrotor_gps</uri> -->
+      <uri>model://quad_ardupilot</uri>
+      <pose>0 0 .1 0 0 0</pose>
+    </include>
+    
+    <!-- the terrain/heightmap -->
+    <model name="heightmap">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_heightmap">
+          <geometry>
+            <heightmap>
+              <uri>file://n34_huntsville.tif</uri>
+              <!-- not scaling size -->
+              <!-- <size>13000 12000 348</size> -->
+              <!-- negative z-pos to offset minimum hunstville elevation (~161m) -->
+              <pos>0 0 -195.95</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+
+        <visual name="visual_heightmap">
+          <geometry>
+            <heightmap>
+              <texture>
+                <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <uri>file://n34_huntsville.tif</uri>
+              <!-- not scaling size -->
+              <!-- <size>13000 12000 348</size> -->
+              <!-- negative z-pos to offset hunstville elevation (~180m in reality) -->
+              <pos>0 0 -196</pos>
+            </heightmap>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
