@@ -1,4 +1,4 @@
-###Dependencies:
+### Dependencies:
 
 	ROS Melodic (Ubuntu 18.04 LTS release)
 	hector_gazebo_plugins (GPS + IMU sensors for quadrotor)
@@ -6,10 +6,10 @@
 	ardupilot_gazebo
 	ArduPilot
 
-###Getting Digital Elevation Models into Gazebo:
+### Getting Digital Elevation Models into Gazebo:
 	http://gazebosim.org/tutorials/?tut=dem
 	
-###Manipulating .tif files:
+### Manipulating .tif files:
 	gdalwarp to resize/adjust resolution/other stuff
 	gdalinfo to get properties
 	qgis to display
@@ -22,7 +22,7 @@
 
 	center point of huntsville (hopefully) = 34.755 N 86.6035 W, elevation: ~208m
 	
-###Setting up ArduPilot:
+### Setting up ArduPilot:
 
 	git clone https://github.com/Ardupilot/ardupilot
 	cd ardupilot
@@ -53,23 +53,17 @@
 		export PATH=$PATH:$HOME/.local/bin
 		export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-9:~/ardupilot_gazebo:${GAZEBO_RESOURCE_PATH}
 	
-###setting home location:
+### setting home location:
 
 	add desired location to following file: ardupilot/Tools/autotest/locations.txt
 	or to this file: $HOME/.config/ardupilot/locations.txt
 	
 	then launch SimVehicle.py with -L <LOCATION_NAME> flag	
 
-###launching ardupilot example sitl:
+###  launching ardupilot example sitl:
 
 
-####(works for dev. vm)	
+#### (works for dev. vm)	
 	wes@ubuntu1804:~/ardupilot/ArduCopter$ ../Tools/autotest/sim_vehicle.py -f gazebo-iris --console --map
 	wes@ubuntu1804:~/ardupilot_gazebo$ roslaunch mavros apm.launch fcu_url:=udp://127.0.0.1:14551@14555
-	wes@ubuntu1804:~/ardupilot_gazebo$ gazebo --verbose worlds/iris_arducopter_runway.world 
-
-####for personal pc:
-	
-	~/ardupilot/ArduCopter$ ../Tools/autotest/sim_vehicle.py -f gazebo-iris --console --map
-	roslaunch mavros apm.launch fcu_url:=udp://127.0.0.1:14551@1
-	[just use your own world/launch with the given plugin]	
+	wes@ubuntu1804:~/ardupilot_gazebo$ gazebo --verbose worlds/iris_arducopter_runway.world
