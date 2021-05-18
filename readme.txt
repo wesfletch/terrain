@@ -15,9 +15,6 @@ Manipulating .tif files:
 
 	center point of huntsville (hopefully) = 34.755 N 86.6035 W, elevation: ~208m
 	
-
-
-
 Setting up ArduPilot:
 
 	git clone https://github.com/Ardupilot/ardupilot
@@ -48,7 +45,6 @@ Setting up ArduPilot:
 	
 		export PATH=$PATH:$HOME/.local/bin
 		export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-9:~/ardupilot_gazebo:${GAZEBO_RESOURCE_PATH}
-	
 	
 setting home location:
 
