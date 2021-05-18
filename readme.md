@@ -58,7 +58,8 @@
 	add desired location to following file: ardupilot/Tools/autotest/locations.txt
 	or to this file: $HOME/.config/ardupilot/locations.txt
 	
-	then launch SimVehicle.py with -L <LOCATION_NAME> flag	
+	then launch SimVehicle.py with -L <LOCATION_NAME> flag
+	center point of huntsville slice: 34.755 N 86.6035 W, elevation: ~208m
 
 ###  launching ardupilot example sitl:
 
